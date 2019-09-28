@@ -1,0 +1,811 @@
+\documentclass[12pt]{article}
+
+%----------Packages-------------------------------------------------
+\usepackage{epsfig}
+\usepackage{amssymb}
+\usepackage{subfigure}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{cite}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%        temporary
+%\`usepackage{showkeys}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%
+%------------------- page layout ----------------
+\hoffset -3mm \voffset -10mm \textwidth 170mm \textheight 220mm
+\topmargin -5mm \oddsidemargin 0mm \evensidemargin 0mm
+
+\begin{document}
+
+\baselineskip 6mm
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+
+%------------ Chanyong Park's macro's, etc  -----------
+
+
+\newcommand{\nc}{\newcommand}
+\newcommand{\rnc}{\renewcommand}
+
+
+%%%%%%%%%%%%%%%%%%%%%% Equation Numbering %%%%%%%%%%%%%%%%%%%%%%%
+%\makeatletter \rnc{\theequation}{\thesection.\arabic{equation}}
+%\@addtoreset{equation}{section} \makeatother
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                               %
+%                NEW COMMANDS AND MACROS                        %
+%                                                               %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\tcb}{\textcolor{blue}}
+\newcommand{\tcr}{\textcolor{red}}
+\newcommand{\tcg}{\textcolor{green}}
+
+%%%%% Simplify some frequently used LaTeX commands %%%%%
+
+\def\ba{\begin{array}}
+\def\ea{\end{array}}
+\def\be{\begin{eqnarray}}
+\def\ee{\end{eqnarray}}
+\def\nn{\nonumber\\}
+
+%%%%%  Temporary notation %%%%
+
+\def\ct{\cite}
+\def\la{\label}
+\def\eq#1{(\ref{#1})}
+
+
+%%% Greek letters %%%
+
+\def\a{\alpha}
+\def\b{\beta}
+\def\g{\gamma}
+\def\G{\Gamma}
+\def\d{\delta}
+\def\D{\Delta}
+\def\e{\epsilon}
+\def\et{\eta}
+\def\ph{\phi}
+\def\Ph{\Phi}
+\def\ps{\psi}
+\def\Ps{\Psi}
+\def\k{\kappa}
+\def\l{\lambda}
+\def\L{\Lambda}
+\def\m{\mu}
+\def\n{\nu}
+\def\th{\theta}
+\def\Th{\Theta}
+\def\r{\rho}
+\def\s{\sigma}
+\def\S{\Sigma}
+\def\ta{\tau}
+\def\o{\omega}
+\def\O{\Omega}
+\def\pr{\prime}
+
+%%%%% Mathematical Symbols
+
+\def\half{\frac{1}{2}}
+\def\goto{\rightarrow}
+
+\def\na{\nabla}
+\def\grad{\nabla}
+\def\curl{\nabla\times}
+\def\div{\nabla\cdot}
+\def\pa{\partial}
+\def\fr{\frac}
+
+
+\def\bra{\left\langle}
+\def\ket{\right\rangle}
+\def\lb{\left[}
+\def\lc{\left\{}
+\def\ls{\left(}
+\def\lp{\left.}
+\def\rp{\right.}
+\def\rb{\right]}
+\def\rc{\right\}}
+\def\rs{\right)}
+
+
+\def\vac#1{\mid #1 \rangle}
+
+
+%%%%  Special symbol
+
+\def\td#1{\tilde{#1}}
+\def\check{ \maltese {\bf Check!}}
+
+%%%%% Roman pont in math
+
+\def\Tr{{\rm Tr}\,}
+\def\det{{\rm det}}
+\def\text#1{{\rm #1}}
+
+%%%%% Special format
+
+\def\bc#1{\nnindent {\bf $\bullet$ #1} \\ }
+\def\ch {$<Check!>$ }
+\def\ss {\vspace{1.5cm}}
+\def\inf{\infty}
+
+\begin{titlepage}
+
+%---------------- preprint number ---------------
+\hfill\parbox{5cm} { }
+
+%\hspace{13cm} \today
+ 
+\vspace{25mm}
+
+
+\begin{center}
+%------------------------ title ------------------------
+{\Large \bf  Entanglement entropy in FRW cosmology}
+
+%---------------- authors and addresses ----------------
+\vskip 1. cm
+   {Chanyong Park$^{a}$\footnote{e-mail : cyong21@gist.ac.kr}}
+
+\vskip 0.5cm
+
+{\it $^a$ Department of Physics and Photon Science, Gwangju Institute of Science and Technology,  Gwangju  61005, Korea}
+
+\end{center}
+
+\thispagestyle{empty}
+
+\vskip2cm
+
+%----------------------- abstract ----------------------
+
+\centerline{\bf ABSTRACT} \vskip 4mm
+
+\vspace{0.5cm}
+
+
+
+In this work, we consider the brane world model which allows the standard Freedman-Robertson-Walker (FRW) cosmology and holographically investigate the time evolution of the entanglement entropy in several expanding universes. In order to realize various four-dimensional FRW cosmologies, we take into account a generalized string cloud geometry describing an asymptotic AdS black hole with uniformly distributed open strings. On the dual field theory side, open strings can be reinterpreted as fundamental matter and the black hole mass is dual to the energy of massless gauge bosons. On the brane world, intriguingly, the bulk cosmological constant and matters lead to the expected eternal inflation, radiation-dominated  and matter-dominated expanding universes. We further study how the entanglement entropy of those various time-dependent universes evolves with time.
+
+
+\vspace{2cm}
+%PACS numbers:
+
+
+
+\end{titlepage}
+
+\renewcommand{\thefootnote}{\arabic{footnote}}
+\setcounter{footnote}{0}
+
+
+%\tableofcontents
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%                    %
+%   Introduction     %
+%                    %
+%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Introduction}
+
+\begin{enumerate}
+
+\item  Brief review on the brane  world model
+
+\item General string cloud geometry and cosmology of the boundary theory.
+
+When the FRW metric of a flat universe is given by
+\be
+ds^2 = - dt^2 + a(t)^2 d \vec{x}^2 ,
+\ee
+where $a(t)$ is a time-dependent scale factor.
+In flat universe the scale factor in the matter-dominated era behaves as $a \sim t^{2/3}$, while in the radiation-dominated era the scale factor behaves as $a \sim t^{1/2}$. For a dS vacuum, the scale factor behaves as $a \sim e^{H t}$ with the Hubble constant $H$, which describes an eternal inflation. How can we represent these various cosmological behaviors in the holographic model?
+
+We regard the brane world model on the generalized string cloud geometry. 
+
+
+\item time evolution of the entanglement entropy in a Friedmann-Robertson-Walker (FRW) cosmology
+
+
+\end{enumerate}
+
+
+
+\section{Review on the brane world model }
+
+Let first assume that ${\cal M}_\pm$ be two $(d+1)$-dimensional bulk spaces with each own well-defined metric $g^{(\pm)}_{MN}$ and that they are bordered at a given radial position denoted by $\pa {\cal M}$ through a $d$-dimensional brane (or domain wall). Then the induced metrics on the both sides of the brane must be reduced to the same metric to get a unique metric of the brane. This requirement was called the first Israel's junction condition, which fixes the tangential components of two bulk metrics to have the same metric at the border. The second junction condition treats derivatives of the bulk metrics in the radial direction perpendicular to the brane. Although the normal components of the metric is continuous at the border, their derivatives are generally not due to a non-vanishing stress tensor of the brane. If we further require the first normal derivative of the bulk metric to be continuous at the border, this condition leads to the second Israel junction equation, When the tension of the brane is given, a radial motion of the brane is governed by the second junction equation. In the brane world model (or the Randall-Sundrum)  \cite{Randall:1999ee,Randall:1999vf,Chamblin:1999ya}, the radial motion of the brane is directly associated with the cosmology on the brane. In order to investigate possible cosmologies on the brane, we first study the brane world model by using the holographic renormalization procedure.  
+ 
+Let us consider the following $(d+1)$-dimensional action
+\be
+S = S_{{\cal M} _+} + S_{ {\cal M}_-} + S_{\pa {\cal M}} ,
+\ee
+where $S_{{\cal M} _\pm} $ indicate two gravity actions determining the bulk metrics $g^{(\pm)}_{MN}$ and the remaining $S_{\pa {\cal M}}$ denotes an action of the brane. More precisely, the gravity action $ S_{{\cal M} _\pm}$ defined on ${\cal M}_\pm$ is given by
+\be
+S_{\pm} = \fr{1}{2 \k^2} \int_{{\cal M}_{\pm}} d^{d+1} x \sqrt{- g} \ \ls {\cal R} - 2 \L^{({\pm})} + {\cal L}^{({\pm})}_m  \fr{}{}\rs - \fr{1}{\k^2} \int_{\pa {\cal M} } d^4 x \sqrt{- \g} K^{({\pm})} ,
+\ee
+where the last term is the Gibbons-Hawking term which is needed to obtain a well-defined Einstein equation. Here, $\g_{\m\n}$ is the induced metric on the brane and ${\cal L}^{({\pm})}_m$ denotes the action of bulk matter fields.  From now on, we assume a negative cosmological constant
+\be
+\L^{({\pm})} = - \fr{d (d-1)}{2 R_{\pm}^2} ,
+\ee
+where $R_{\pm}$ is AdS radii of ${\cal M} _\pm$. In general, the action $S_{\pm}$ can have different cosmological constants and matter contents.  In the present work,  we assume that two bulk geometries have the same cosmological constant and matter contents for simplicity. If one consider different cosmological constants and matter contents, one can find a variety of different cosmologies on the brane.
+
+If we require translational and rotational symmetries on the brane, the corresponding bulk metrics has the following form 
+\be		   \la{metric:GeneralAn}
+ds^2 = g_{MN} dx^M dx^N =  - A(r ) d t ^2  + B(r ) dr^2 + C(r)\ \d_{ij} dx^i dx^j ,
+\ee
+where $i,j = 1, \cdots, d-1$. Before discussing the junction equation, it must be noted that the radial ranges of ${\cal M}_{\pm}$ is restricted to a finite or semi-infinite region due to the existence of the brane. Representing the position of the brane as $r_c$, in general, the range of the radial coordinate in the bulk spaces is limited to $0 \le r \le r_c$ or $r_c \le r\le \infty$. However, if we further require the reflection invariance under $r = 2 r_c - r$, the radial range of two bulk spaces reduces to $0 \le r \le r_c$ and $r_c \le r \le 2 r_c$. This $Z_2$ symmetry was used to construct the first Randall-Sundrum model. Although our description explained later is applied to the general case without the $Z_2$ symmetry, we hereafter focus on the case with the $Z_2$ symmetry because the later case is sufficient to present important features we are interested in. Anyway, if the geometry of ${\cal M}_-$ is determined in the present setup, the geometry of ${\cal M}_+$ is automatically fixed due to the $Z_2$ symmetry.
+
+After rewriting the bulk metric $g_{MN}$ as the form of the ADM decomposition, 
+\be
+g_{MN} dx^M dx^N  = B (r) \ dr^2 + \g_{\m\n} dx^\m dx^\n , 
+\ee
+we can derive an on-shell gravity action by applying the equation of motion. Due to the equation of motion, the on-shell gravity action generally reduces to a boundary action defined at the boundary of ${\cal M}_{\pm}$ at which the brane is located. The variation of the boundary action with respect to the boundary metric is
+\be
+\delta S_{\pm}= \int_{\pa {\cal M}} d^d x \sqrt{-\g} \ \pi^{({\pm})}_{\mu\nu}  \delta {\g}^{\mu\nu},
+\ee
+with the canonical varialbe of the metric
+\be			\la{result:BoundaryStressM}
+\pi^{({\pm})}_{\mu\nu}  = \frac{1}{\sqrt{\g}} \frac{\d S_{\pm}}{\delta \g^{\mu\nu}}  = - \frac{1}{2 \k^2}  \left( K^{(\pm)}_{\mu\nu} - \g_{\mu\nu} K^{(\pm)} \right) ,
+\ee
+where $K_{\mu\nu} = \nabla_\m n_\n$ indicates an extrinsic curvature tensor at the boundary. In the holographic renormalization procedure, this canonical variable corresponds to the stress tensor of the dual field theory defined at the boundary. Due to the $Z_2$ symmetry we imposed, the extrinsic curvatures of two bulk spaces satisfy $K^{(+)}_{\mu\nu} = - K^{(-)}_{\mu\nu}$ because the directions of the normal unit vectors on  ${\cal M}_\pm$ are opposite to each other. Defining $K_{\mu\nu}  = K^{(-)}_{\mu\nu}$, the resulting boundary stress tensor becomes 
+\be			\la{result:BoundaryStressP}
+\pi^{(\pm)}_{\mu\nu}  =  \pm \frac{1}{2 \k^2}  \left( K_{\mu\nu} - \g_{\mu\nu} K \right) .
+\ee
+
+Note that the above boundary stress tensors are defined at the same position. Nevertheless, two boundary stress tensors derived in ${\cal M}^{(\pm)}$ are not the same. Why does this discrepancy occur? The reason is that the brane can also have a non-vanishing stress tensor. Consequently, the brane's stress tensor must get rid of the discrepancy of the boundary stress tensors mentioned before. Denoting the brane's stress tensor as $T_{\m\n}$, the brane's tensor must satisfy 
+\be
+\pi^{(+)}_{\mu\nu}  - \pi^{(-)}_{\mu\nu}  = T_{\m\n} ,
+\ee 
+which is known as the second Israel junction condition. Assuming that the brane is in a ground state with a constant energy density and a pressure, the brane's action is simply
+\be
+S_{\pa {\cal M}} = - \fr{2 \s}{\k^2} \int_{\pa {\cal M}} d^d x \ \sqrt{-\g} ,
+\ee
+where $2 \s/\k^2$ corresponds to a brane's tension and $\pa {\cal M}$ indicates the brane's worldvolume. In this case, the brane's stress tensor is given by
+\be
+ T_{\m\n}  = \fr{1}{\sqrt{-\g}} \fr{\pa S_B}{\pa \g^{\m\n}} =  \fr{ \s}{\k^2} \g_{\m\n} .
+\ee
+Applying the $Z_2$ symmetry discussed before, the Israel junction equation finally results in the following simple form
+\be
+K_{\m\n} = - \fr{\s}{d-1} \g_{\m\n} .
+\ee
+
+
+\section{Radial motion of the brane}
+
+From the holography point of view, the brane plays a role of the boundary for two bulk spaces on which the dual field theory is defined. In this case, the position of the brane is identified with the energy scale of the dual field theory. If we are interested in physics at a certain fixed energy scale, it is natural to take into account a non-dynamical brane (or boundary) lying at a finite radial distance. In the brane world model, however, we are interested in the cosmology on the brane which must be time dependent. Since the cosmology on the brane is associated with the radial motion of the brane in the bulk spaces, it is betterl to take the radial position of the brane as a function of time, $r_c(t)$. Under this parameterization, we rewrite the junction condition as a more explicit form in terms of metric components.
+
+When the brane is moving in the radial direction, a unit tangential vector on the brane is given by
+\be
+u^M = \fr{1}{\sqrt{A-B \dot{r}^2}} \lc 1, \dot{r}, 0,\cdots,0 \rc ,
+\ee
+where $r$ means the position of the brane $r_c$. The unit tangential vector satisfies $u^M g_{MN} u^N = -1$. By using the above tangential vector a unit normal vector, which is orthogonal to the tangential vector with satisfying $n^M g_{MN} u^N = 0$, reads
+\be
+n_M = \fr{\sqrt{A B}}{\sqrt{A-B \dot{r}^2}} \lc \dot{r}, -1,0,\cdots,0 \rc  ,
+\ee
+where the normal vector is normalized to be $n_M g^{MN} n_N =1$. In terms of the normal vector, the extrinsic curvature tensor is defined by $K_{MN} = \g^P_M \g^Q_N \nabla_P n_Q$ with $\g_{MN} = G_{MN} - n_M n_N$. The spatial components of the extrinsic curvature tensor result in (see Ref. \cite{Chamblin:1999ya} for more details)
+\be
+K_{ij} = - \fr{\sqrt{AB}}{A} \fr{C'}{C} \fr{1}{\sqrt{A-B \dot{r}^2}} \g_{ij} ,
+\ee
+where the prime indicates a derivative with respect to $r$. As a consequence, the junction equation reduces to
+\be
+\fr{C'}{C} = \fr{\s}{d-1} \fr{\sqrt{AB}}{A}  \sqrt{A-B \dot{r}^2} .
+\ee
+When the bulk metric is determined by solving bulk equation of motion, the junction equation fixes the radial motion of the brane with a velocity $\dot{r}$.
+
+For reinterpreting the brane's radial motion as the cosmology on the brane, we must introduce a cosmological time $\ta$ defined on the brane 
+\be
+- d \ta^2 =  - A dt^2 + B dr^2 .
+\ee
+After we replace $C(r)$ by $a(r)^2$ and regard $r$ as a function of the cosmological time $\ta$ instead of the bulk time $t$, the induced metric on the brane finally becomes
+\be			\la{metric:FRW}
+ds_\S^2 = - d \ta^2 + a(\ta)^2 \ \d_{ij} dx^i dx^j  .
+\ee
+This metric is nothing but the FRW metric representing the time evolution of the universe. In terms of the cosmological time, the junction condition is rewritten as
+\be		\la{result:RadialMotion}
+\ls \fr{da}{d\ta} \rs^2= \fr{\s^2}{(d-1)^2}  \fr{C^2}{C'^2} - \fr{1}{B}.
+\ee
+If the bulk metric is known, the corresponding cosmology on the brane is easily determined by the above junction equation.
+
+
+
+\section{Cosmology on the brane}
+
+In the previous sections, we studied the general formula representing the relation between the brane's motion in the bulk space and the time evolution in the brane world. In this section, we try to construct an appropriate gravity theory which can describe the cosmology of the brane world with various matter contents like a vacuum energy, non-relativistic matters and radiations \cite{Kinney:2009vz}.
+ 
+
+\subsection{Standard cosmology in four-dimensional flat space}
+
+Before studying the cosmology in the brane world model, for the later comparison with the well-known results of the standard cosmology we briefly summarize the cosmologies appearing in a four-dimensional flat universe. The cosmology of a four-dimensional flat universe can be described by the FRW metric in \eq{metric:FRW} where $a(\ta)$ is called the scale factor. The scale factor represents how rapidly the universe expands. Due to the existence of the nontrivial scale factor in the FRW metric, it is worth noting that a distance $|d\vec{x}|$ defined in the comoving frame is not physical. Instead, the physical distance is given by  $a(\ta)  | d\vec{x}|$.
+
+In the standard cosmology, the time-dependence of the scale factor is governed by the Friedmann equation
+\be
+\ls \fr{\dot{a}}{a} \rs^2 = \fr{\k^2}{3} \r   ,
+\ee
+and the continuity equation
+\be
+0=\dot{\r} + 3 \ls \fr{\dot{a}}{a} \rs (\r + p) ,
+\ee
+where $\r$ and $p$ are a energy density and pressure of matters contained in the universe. Assuming that matter is an ideal gas satisfying $ p = w \r$, the value of the equation of state parameter $w$ characterizes what kind of the matter is contained in the universe. For example, when $w=-1$ the matter corresponds to the vacuum energy or cosmological constant of the universe. If $w=0$, the matter is called dust corresponding to non-relativistic particles with no pressure. For $w=1/3$, lastly, the matter reduces to radiations corresponding to relativistic massless fields. 
+
+Solving the continuity equation with the ideal gas, the energy density in terms of the scale factor is rewritten as
+\be
+\r \sim a^{-3(1+w)} .
+\ee
+Plugging this relation to the Friedmann equation, the scale factor except for $w = -1$ is determined as a function of the cosmological time
+\be
+a (t) \sim \ta^{\fr{2}{3(1+w)}}. 
+\ee
+This result shows that the scale factor in the radiation-dominated era ($w=1/3$) increases by $a \sim \ta^{1/2}$ as time goes on, while it increases by $a\sim \ta^{2/3}$ in the matter-dominated era ($w=0$) . For $w=-1$, the scale factor behaves as $a \sim e^{H \ta}$ and represents an eternal inflation.
+
+
+
+\subsection{Bulk geometry for the brane world model}
+
+In the previous section, we briefly discussed the possible cosmologies relying on the matter distributed in the universe. In the brane world model, how can we realize the cosmology of an expanding universe with various different kind of the matter? In this section, we try to construct a specific five-dimensional  gravity theory which may allow us to rederive the known results of the standard cosmology in the brane world model.
+
+Let us first consider the five-dimensional gravity theory without a bulk matter field. Then, due to the negative cosmological constant, the most general geometric solution is given by an AdS black hole (or black brane) metric
+\be
+ds^2 =  \fr{r^2}{R^2} \ls -   f(r) d t ^2 +  \d_{ij} dx^i dx^j  \fr{}{} \rs   +\fr{R^2}{r^2 f(r)} dr^2 ,
+\ee
+with a blackening factor
+\be		\la{solution:AdSBH}
+f(r) = 1- \fr{m}{r^4}  ,
+\ee
+where $m$ indicates a black hole mass. According to the AdS/CFT correspondence, a gravity theory having an asymptotic AdS metric solution is dual to a SU(N) gauge theory with a UV conformal fixed point. Especially, an AdS black hole geometry corresponds to a thermal system of such a gauge theory due to the well-defined temperature. It has been shown that the stress tensor of boundary theory, after the appropriate holographic renormalization procedure, is associated with the black hole mass and proportional to $N^2$, where $N$ is the rank of the gauge group. In this case, the $N^2$ dependence of the stress tensor implies that the matter content of the dual field theory follows an adjoint representation under the gauge group transformation. Therefore, we can identify the black hole mass with the excitation energy of the massless gauge bosons. To clarify this identification further, there exists another important remarkable point. For a $(d+1)$-dimensional AdS black hole,  it was known that the energy density and pressure of the derived boundary stress tensor satisfy the relation $p = \r/(d-1)$. For $d=4$, the dual field theory describes a four-dimensional flat space and the matter of the boundary theory satisfies the equation of state of a relativitic massless field. This fact is another evidence of the previous identification between the black hole mass and the excitation energy of the gauge bosons of the dual field theory.   
+
+
+Now, let us think about a bulk matter field which may correspond to the fundamental matter of the dual gauge theory. From the gauge theory point of view, the fundamental matter is a matter field transformed by the fundamental representation of the gauge group. In the string theory, it was well known that one end of an open string follows the fundamental representation under the gauge transformation due to the Chan-Paton factor. Therefore, the fundamental matter on the brane can be realized by many open strings whose one ends are attached to the brane. For more details, we consider open strings on an AdS space time. Since the open strings are one-dimensional objects, the gravity action with $N$ open strings in a regularized volume is written as
+\be
+S = \fr{1}{2 \k^2} \int d^{5} x \sqrt{-g} \ls {\cal R} - 2 \L \rs  -\fr{3 {\cal T}}{4} \sum_{i=1}^N  \int d^2 \xi_i \sqrt{-h} h^{\a\b} \pa_{\a} x^{M} \pa_{\b} x^{N} g_{MN}  ,
+\ee
+where $\fr{3}{4} {\cal T}$ is a tension of open strings and $h_{\a\b}$ is an induced metric on the string. Here, the factor $\fr{3}{4}$ was introduced for later convenience. From this action, the Einstein equation including the gravitational backreaction of open strings reads
+\be
+R_{MN} - \half R g_{MN} + \L g_{MN} = \k^2 T_{MN} ,
+\ee 
+with 
+\be
+T^{MN} = - \fr{3 \r}{2} \ \fr{\sqrt{-h}}{\sqrt{-g}}  \ h^{\a\b} \pa_{\a} x^{M} \pa_{\b} x^{N} ,
+%\d_i^{(d-1)} \ls x - X \rs  .
+\ee
+where $\r = N {\cal T}/V$ indicates an energy density of open strings in an appropriately regularized three-dimensional volume $V$ perpendicular to $\xi^\a$. In order to represent open strings whose one ends are attached to the brane, we take into account open strings extended to the radial direction. Then, such a string configuration can be well expressed in the static gauge with $\xi^0=t$ and $\xi^1=r$. The solution of this gravity theory was known as the string cloud geometry and studied in \cite{Stachel:1980zr,Letelier:1979ej,Gibbons:2000hf,Herscovich:2010vr,Chakrabortty:2011sp,Chakrabortty:2016xcb}. 
+
+
+
+
+Intriguingly, the gravity theory with uniformly distributed open strings allows a simple and analytic solution satisfying the weak and dominant energy conditions \cite{Chakrabortty:2011sp,Chakrabortty:2016xcb},
+\begin{equation}
+ds^2 = \frac{r^2}{R^2} \left(- f(r) dt^2  + \d_{ij} dx^i dx^j\right)  + \frac{R^2}{r^2 f(r)} dr^2,
+\end{equation}
+with the nontrivial metric factor 
+\begin{equation}		\la{res:blackholefactor}
+f(z) = 1  -  \fr{\r}{r^{3} } . %- m z^{d} . 
+\end{equation}
+This string cloud geometric solution resembles a black hole solution due to the existence of a horizon. To make a black hole, as mentioned before, a well-localized matter is required. If we consider uniformly distributed either particles or open strings in the flat spacetime, we cannot expect the existence of a black hole-like geometric solution. However, this is not true for the AdS case. An AdS space has a nontrivial warping factor which makes ta three-dimensional spatial volume perpendicular to the radial direction approach zero at $r \to 0$. This fact implies that the energy density of open strings becomes effectively high at the center of the AdS space. This is the reason why the black hole-like geometry appears when we regard uniformly distributed open strings on the AdS background geometry. Moreover, comparing the string cloud geometry to the five dimensional AdS black hole solution in \eq{solution:AdSBH}, we easily see that the blackening factors of two-black hole solutions show different power behaviors. To construct a black hole solution, in general, we take into account matter which is well localized in the inside of the black hole horizon, which corresponds to an effectively zero-dimensional object located at the center of the black hole. However, the string cloud geometry was constructed by one-dimensional objects. Due to the different dimensions of two objects for the black hole and the string cloud geometry, the power in the blackening factor of the string cloud geometry has a different power from the one of the black hole. As a consequence, the string cloud geometry is the dual of the gauge theory containing fundamental matter.
+
+The existence of the horizon in the string cloud geometry allows us to define temperature. The horizon is located at
+\be
+r_h = \r^{1/3} ,
+\ee
+and it leads to temperature
+\be
+T_H =  \fr{3  \r^{1/3}  }{4 \pi R^2} .
+\ee
+Although temperature is well defined, temperature of the string cloud geometry is fixed by the energy density of open strings. In addition, temperature of the string cloud geometry is not a free parameter  
+unlike the black hole case. Therefore, temperature is not an essential concept in the string cloud geometry. 
+
+Now, we further take into account a generalization of the string cloud geometry. If we put additional zero-dimensional matter into the center of the string cloud geometry, the above string cloud geometry can be further generalized to 
+\begin{equation}			\la{metric:GStringCloud}
+ds^2 = \frac{r^2}{R^2} \left(- f(r) dt^2  + \d_{ij} dx^i dx^j\right)  + \frac{R^2}{r^2 f(r)} dr^2,
+\end{equation}
+with the following blackening factor
+\be
+f(z) = 1  -  \fr{\r}{r^{3}} -     \fr{m}{r^{4}} ,
+\ee
+which is a combination of the ordinary black hole and the string cloud geometry. Hereafter, we call this geometry a generalized string cloud geometry, for convenience. It is worth to remembering that $\r$ and $m$ of the generalized string cloud geometry are related to fundamental matter and gauge bosons of the dual gauge theory, respectively. Since we are interested in the cosmologies in the matter-dominated and radiation-dominated eras, the generalized string cloud geometry \eq{metric:GStringCloud} is one good candidate to represent such cosmologies on the brane in the brane world model.
+
+
+On the generalized string cloud geometry in \eq{metric:GStringCloud}, the radial motion of the brane is determined by \eq{result:RadialMotion}
+\be		
+\ls \fr{dr}{d\ta} \rs^2=  \ls \fr{\s^2}{36}  - \fr{1}{R^2} \rs r^2  + \fr{\r}{R^2}  \fr{1}{r} +   \fr{m}{R^2} \fr{1}{r^2} ,
+\ee
+and the induced metric on the brane becomes
+\be
+ds_\S^2 = - d \ta^2 +  \fr{r(\ta)^2}{R^2}  \ \d_{ij} dx^i dx^j  .
+\ee
+As shown in these results, the radial position of the brane $r$ is directly related to the scale factor of the brane world, $a(\ta) = r(\ta)/R$. In order to know what kinds of cosmologies appear on the brane, we consider several specific parameter regions which reproduce the same results of the standard cosmology.
+
+\begin{enumerate}
+
+\item Time-independent universe
+
+For an AdS space with $\r=m=0$, the motion of the brane is determined only by the tension of the brane and the curvature of the AdS space. If the tension of the brane has a critical value given by  
+\be
+\s_c = \fr{6}{R} ,
+\ee
+the brane does not move in the radial direction and the scale factor of the brane world becomes time-independent.
+
+\item Eternal inflationary era
+
+If the brane in the AdS space has a tension different from the critical value $\s_c$, its radial motion is governed by
+\be			\la{result:BraneVel}
+ \fr{dr}{d\ta}  =   \sqrt{ \fr{\s^2}{36}  - \fr{1}{R^2} }  \ r   .
+\ee
+Then, the radial position of the brane is determined in terms of the cosmological time on the brane
+\be			\la{result:ScaleFactorInf}
+r (\ta )  = r_0 \ e^{H \ta} ,
+\ee
+with a Hubble constant
+\be
+H = \fr{\sqrt{\s^2 - \s_c^2}}{6} ,
+\ee
+where $r_0$ is an initial position of the brane at $\ta=0$, which must be determined by an appropriate initial condition, and $R$ is introduced to give a correct dimension. This is equivalent to the cosmology in a dS space, in which the inflation era does not finish.
+
+\item Matter-dominated era 
+
+Recalling that open strings in the bulk corresponds to fundamental matter on the brane, the cosmology caused by the fundamental matter on the brane can be characterized by taking $\s=\s_c$ and $m=0$. In this case, only the nontrivial contribution comes from the energy density of the open strings and the curvature of the bulk AdS space. On this background bulk geometry, the radial motion of the brane is governed by
+\be
+\fr{dr}{d\ta} =   \fr{\sqrt{\r}}{R}  \fr{1}{r^{1/2}}   ,
+\ee
+Since the radial position of the brane is the same as the scale factor of the brane cosmology, solving the above differential equation leads to the scale factor proportional to $\ta^{2/3}$
+\be
+r (\ta ) =  \ls \fr{3}{2} \rs^{2/3} \fr{\r^{1/3}}{R^{2/3}} \ \ta^{2/3},
+\ee
+which is consistent with the result of the standard cosmology mentioned before.
+
+\item Radiation-dominated era
+
+Finally, let us focus on the radiation-dominated era. In this case, the radiation means a variety of massless gauge bosons whose equation of state parameter is given by $w=1/3$. The radiation dominance on the brane can be represented as the bulk AdS black hole, as mentioned before. As a result, taking $\s=\s_c$ and $\r=0$ in the bulk geometry is dual to the radiation-dominated era of the brane cosmology. In this case, the radial motion of the brane is governed by
+\be
+ \fr{dr}{d\ta}  =  \fr{\sqrt{m}}{R } \fr{1}{r } ,
+\ee
+This differential equation results in the scale factor in the radiation-dominated era which is proportional to $\ta^{1/2}$. More precisely, the resulting scale factor reads
+\be
+r (\ta ) =  \fr{\sqrt{2} m^{1/4}}{\sqrt{R}} \ \ta^{1/2} .
+\ee
+The behavior of the scale factor on the brane in the radiation-dominated era is again coincident with the result obtained in the previous standard cosmology.
+
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+\section{Entanglement entropy in the expanding universe}
+
+In the previous section, we discussed the possible cosmological solutions on the brane world. In this section, we holographically investigate the entanglement entropy of the brane cosmologies. Recently, it has been shown that if the field theory and its dual geometry have a time-translation symmetry, its entanglement entropy can easily be calculated in the dual gravity theory by applying the RT (Ryu andTakayanagi) formula. However, if we are interested in the entanglement entropy of an expanding universe where the time-translational symmetry is broken, we must utilize the HRT (or covariant) formula instead of the RT formula. In spite of this fact, it is still possible to use the RT formula to understand the entanglement entropy of the expanding universe at least in the brane world model. In general, the RT and HRT formulas calculate the area of the minimal surface extended to the dual bulk geometry. In the brane world model, the bulk geometry is described by a static metric, which is time-translational invariant, and the time dependent cosmology on the brane is governed by the radial motion of the brane. Due to this feature of the brane world model, it is still possible to apply the RT formula in the dual static geometry. In this case, the nontrivial time dependence of the entanglement entropy in the expanding universe occurs due to the time-dependent integration range of the RT formula. Therefore, it would be interesting to study how the entanglement entropy in the expanding universe evolves as time goes on.
+
+
+\subsection{Entanglement entropy in a flat space}
+
+In order to get some intuitions to understand the time evolution of the entanglement entropy in the expanding universe, let us first consider a static brane with $\s=\s_c$ and $\r=m=0$. In this case, the bulk geometry is a simple AdS space and the brane does not move in the radial direction. Moreover, the induced metric on the brane is just a time-independent flat Minkowski metric. Although this induced metric does not describe the expanding universe, the holographic calculation for the entanglement entropy in this setup may be useful to understand the entanglement entropies in the various expanding universes.
+
+For simplicity, we consider a static brane in a three-dimensional AdS space. Introducing $z=R^2/r$, the three-dimensional AdS metric becomes
+\be
+ds^2 &=&  \fr{R^2}{z^2} \ \ls dz^2 - dt^2 + dx^2  \rs  ,  \la{metric:inner} 
+\ee
+where $\bar{z}$ indicates the position of the brane and the range of $z$ is restricted to $\bar{z} \le z \le \infty$. In this case, the brane plays a role of an appropriate UV cutoff of the AdS space from the viewpoint of the holographic renormalization group flow. Thus, this setup is very similar to the cutoff AdS space studied recently in the $T \bar{T}$-deformation.
+
+Applying the RT formula in a cutoff AdS geometry, the entanglement entropy of the boundary is associated with the area of a minimal surface extended to the cutoff AdS space. If we divide the boundary space into a subsystem of $-l/2 \le x \le l/2$ and its complement, the entanglement entropy is given by
+\be				\la{action:HEE2}
+S_E = \fr{R_{in}}{4 G} \int_{-l/2}^{l/2} dx \ \fr{\sqrt{1 + z'^2}}{z}  ,
+\ee
+where the prime means a derivative with respect to the boundary coordinate $x$. This action leads to the equation of motion which determines the configuration of the minimal surface
+\be
+0 =  1+ z'^2 + z z'' .
+\ee
+The general solution of this equation is given by
+\be
+z (x) = \sqrt{c_1 - \ls c_2 + x \rs^2 } ,
+\ee
+where $c_1$ and $c_2$ are two integral constants. 
+
+In order to determine the exact configuration of the minimal surface, we have to fix two undetermined integral constants by imposing appropriate two boundary conditions. To do so, first, it is worth noting that the above entanglement entropy is invariant under the parity $x \to -x$. Together with this fact, the smoothness of the minimal surface yields that $z'$ vanishes at $x=0$. If we denote the value of $z(0)$ as $z_0$, $z_0$ becomes a turning point of the minimal surface at which the value of $z'$ changes its sign. The turning point gives rise to an upper bound for the range of $z$ extended by the minimal surface. Another important thing we should notice is that the existence of the turning point requires $c_2 = 0$. When we calculate the area of the minimal surface, second, the end of the minimal surface must be identified with the entangling surface defined at the boundary. This implies that we must impose the corresponding boundary condition, $\bar{z} = z \ls \pm l/2 \rs$. This additional boundary condition fixes the remaining integral constant to be
+\be
+c_1 = \fr{l^2}{4} + \bar{z}^2 ,
+\ee
+where $\bar{z}$ is given by a constant value. As a consequence, the coordinates of the minimal surface satisfies the following circular trajectory
+\be
+z^2 + x^2 = \fr{l^2}{4} + \bar{z}^2 .
+\ee
+Here, the ranges of $z$ and $x$ are restricted to $\bar{z} \le z \le z_0$ and $-l/2 \le x \le l/2$ respectively and the turning point appears at
+\be
+z_0 = \sqrt{\fr{l^2}{4} + \bar{z}^2} .
+\ee
+
+
+After substituting the obtained solution into the entanglement entropy formula in \eq{action:HEE2}, performing the integral finally results in
+\be
+S_E = \fr{c}{3} \log \ls \fr{\sqrt{l^2 + 4 \bar{z}^2} + l}{\sqrt{l^2 + 4 \bar{z}^2} - l} \rs ,
+\ee
+where the central charge is defined as $c= \fr{2 R}{ 3 G}$. When the boundary position approaches the UV regulator ($\bar{z}=\e \to 0$), this result reproduces the well-known entanglement entropy of a two-dimensional CFT up to a constant term
+\be
+S_E = \fr{c}{3} \log \fr{l}{\e} .
+\ee
+This simple example shows how to impose the appropriate boundary conditions when we calculate the entanglement entropy holographically.
+
+
+The above calculation can be easily extended to higher-dimensional cases. For a $(d+1)$-dimensional AdS space, the metric in the Poincare patch is given by
+\be
+ds^2 %&=& \fr{R^2}{z^2} \ls dz^2 - dt^2 + d x^2_{d-1}\rs  \nn
+     &=& \fr{R^2}{z^2} \ls dz^2 - dt^2 + d \r^2 + \r^2 d \O_{d-2}^2 \rs 
+\ee
+where $\O_{d-2}$ indicates a solid angle of a $(d-2)$-dimensional sphere. If we take a $(d-2)$-dimensional sphere with a radius $l$ as an entangling surface, the entanglement entropy between the inside and outside of the entangling surface is governed by
+\be			\la{action:EntanglementE}
+S_E = \fr{R^{d-1}  \O_{d-2}}{4 G} \int_0^l d \r \ \fr{\r^{d-2} \sqrt{1 + z'^2}}{z^{d-1}}  .
+\ee
+In this case, the circular trajectory again appears as the solution of the equation of motion
+\be
+z (\r) = \sqrt{l^2+ \bar{z}^2 - \r^2}  .
+\ee
+This solution automatically satisfies the previously required boundary conditions. At $\r=0$ the minimal surface has a turning point satisfying $z'=0$ and the solution satisfies $z(l) = \bar{z}$, which indicates that the minimal surface is anchored to the entangling surface defined at the boundary. Using the obtained solution, the resulting entanglement entropy on the brane located at $\bar{z}$ is 
+\be      \la{result:RHEE}
+S_E = \fr{R^{d-1}}{4   (d-1) G } \frac{  l^{d-1}  \Omega_{d-2}  }{\bar{z}^{d-2} \sqrt{l^2+\bar{z}^2}}  \, _2F_1\left(\frac{1}{2},1;\frac{d+1}{2};\frac{l^2}{l^2+\bar{z}^2}\right)  .
+\ee
+In the limit of $\bar{z} \to 0$ in which the boundary is located at the UV fixed point, the leading term of the entanglement entropy reduces to
+\be
+S_E = \fr{R^{d-1}}{4   (d-2) G } \frac{  l^{d-2}  \Omega_{d-2}  }{\bar{z}^{d-2}}  + \cdots ,
+\ee
+where the ellipsis indicates higher order correction. In this case, the position of the brane $\bar{z}$ plays a role of an appropriate UV cutoff and $l^{d-2}  \Omega_{d-2} $ corresponds to the area of the entangling surface, which is consistent with the area law of the entanglement entropy.
+
+
+%\tcr{(check the result, area law)}
+%\be			
+%S_E = \frac{ R^{d-1} }{ 2^{d+1} (d-1) G    }  
+% \fr{ l^{d-1} \Omega_{d-2}}{\lb l^2+\bar{z}^2 \rb^{(d-1)/2}}
+%\ _2F_1\left(\frac{d-1}{2},\frac{d}{2};\frac{d+1}{2};\frac{l^2}{4 \left(l^2+\bar{z}^2\right)}\right)  .
+%\ee
+
+
+\subsection{Entanglement entropy in an eternal inflationary era}
+
+Now, let us consider the entanglement entropy in the eternal inflationary cosmology. In the brane world model, the eternal inflation on the brane appears when we consider an AdS bulk geometry ($\r=m=0$) with a noncritical brane tension $\s \ne \s_c$. Even in this case, since the bulk geometry has nothing to do with the brane tension, the dual geometry is still given by an AdS space. The difference from the previous case is that the brane moves in the radial direction with the velocity in \eq{result:BraneVel}. Therefore, the holographic calculation for the entanglement entropy is almost the same as the previous case. However, there exists one difference caused by the radial motion of the brane. When we take into account the circular trajectory of the minimal surface, the boundary condition imposed at the boundary must be slightly modified because the boundary are moving. Requiring the end of the minimal surface to attach to the moving brane, the consistent solution must be given by a function of $\ta$ and $\r$ 
+\be
+z (\ta,\r) = \sqrt{l^2+ \bar{z}(\ta)^2 - \r^2} .
+\ee
+It is worth to noting that the time dependence of the holographic entanglement entropy in the brane world model appears due to the time-dependent boundary condition. Performing the entanglement entropy integral in \eq{action:EntanglementE} by using the obtained time-dependent solution, the resulting entanglement entropy again yields \eq{result:RHEE} with the time-dependent brane position $\bar{z}(\ta)$, instead of a constant $\bar{z}$, because \eq{action:EntanglementE} contains only the integration over $\r$. For $d=4$, the resulting entanglement entropy is
+\be				\la{result:TimeDHEE}	
+S_E = \fr{R^{3}}{12 G } \frac{  l^{3}  \Omega_{2}  }{\bar{z}(\ta)^{2} \sqrt{l^2+\bar{z}(\ta)^2}}  \, _2F_1\left(\frac{1}{2},1;\frac{5}{2};\frac{l^2}{l^2+\bar{z}(\ta)^2}\right)  .
+\ee
+From the viewpoint of an observer living on the brane, the position of the brane must be reinterpreted as the time evolution of the universe by using \eq{result:ScaleFactorInf}
+\be
+\bar{z} (\ta) = \fr{R^2}{\bar{r}(\ta)} = \fr{R^2}{r_0} \ e^{- H \ta} .
+\ee
+Then, the entanglement entropy on the inflationary era results in
+\be
+S_E^{(inf)}=\fr{ r_0^2}{12 G R} \frac{  l^{2}  \Omega_{2}  e^{2 H \ta} }{ \sqrt{1+ \ls R^4 /r_0^2  l^2 \rs e^{- 2 H \ta}}}  \, _2F_1\left(\frac{1}{2},1;\frac{5}{2};\frac{1}{1+ \ls R^4 /r_0^2  l^2 \rs e^{- 2 H \ta}}\right)   .
+\ee
+
+Remembering that the physical distance increases by $L\sim l e^{H \ta}$ with time in the inflationary era, the above result shows that the entanglement entropy is proportional to the area of the entangling surface measured by the physical distance, $A = \pi L^2 \O_2$. In the early-time inflation era ($H \ta \ll 1$), the small time perturbation leads to 
+\be
+S_E^{(inf)} = \frac{l r_0 \Omega _2 \sqrt{l^2 r_0^2+R^4}}{8 G R}-\frac{R^3 \Omega _2 }{16 G} \log \left(\fr{\sqrt{R^4 + l^2 r_0^2} + l r_0}{\sqrt{R^4 + l^2 r_0^2} - l r_0 }\right) + \fr{H l^3 r_0^3\O_2 \ta}{4 G R \sqrt{R^4 + l^2 r_0^2}}  + {\cal O} \ls  \tau^2 \rs ,
+\ee
+which shows that the entanglement entropy in the early time increases with time linearly. However, the entanglement entropy grows exponentially in the late-time inflationary era  ($ H \ta  \gg 1$) 
+\be
+S_E^{(inf)} =\frac{l^2 r_0^2 \Omega _2 e^{2 H \tau }}{8 G R}
++\frac{R^4 \Omega _2  \ls  1 + 2  \log (2 R^2 / l r_0)  \rs}{16 G R}  -\frac{H R^3  \Omega _2 \tau }{8 G} + {\cal O} \ls  e^{- 2 H \tau }\rs  .
+\ee
+This late-time behavior of the entanglement entropy, $S_E^{(inf)} \sim e^{2 H \ta}$, in the inflationary era is consistent with the result expected in a different  holographic model \cite{Koh:2018rsw}. 
+
+\subsection{Entanglement entropy in the radiation- and matter-dominated eras}
+
+Now, let us take into account the time evolution of the entanglement entropy in the radiation- and matter-dominated eras. On the generalized string cloud geometry in \eq{metric:GStringCloud}, we already showed that the radiation- and matter-dominated eras can occurs as the cosmological solution on  the brane. On this background, the entanglement entropy in the $z$-coordinate system ($ z = R^2 / r$) is given by
+\be
+S_E = \fr{R^{3}  \O_{2}}{4 G} \int_0^l d \r \ \fr{\r^{2} \sqrt{f + z'^2}}{z^{3} \sqrt{f}}  
+\ee
+where we take $d=4$ and 
+\be
+f(z) = 1  - \td{\r} z^3  -\td{m} z^4  \quad {\rm with} \ \  \td{\r} \equiv \fr{\r}{R^6} , \ {\rm and} \ \td{m} \equiv \fr{m}{R^8} 
+\ee
+Due to the nontrivial factor $f$ in the entanglement entropy formula, it is not  easy to find an analytic solution satisfying the equation of motion. Thus, we consider a specific parameter region in which we can get some information about the time evolution of the entanglement entropy in the expanding universe. To do so, let us remind an important feature of the minimal surface in the AdS black hole geometries. The minimal surface in the dual geometry, which is proportional to the entanglement entropy of the dual field theory, is smooth in the entire bulk geometry. This fact indicates that there exists a turning point where $z' = 0$. This turning point appears at $\r=0$ due to the rotational symmetry. Denoting the turning point as $z_0 = z(0)$, it gives rise to a upper bound for the $z$'s range. In the brane world model, in addition, the position of the brane $\bar{z}$ provides a lower bound for $z$. These bounds restrict the range of $z$ extended by the minimal surfact to $\bar{z} \le z \le z_0$. If the subsystem size $l$ in the comoving frame becomes smaller, $z_0$ approaches $\bar{z}$. On the other hand, when $l$ increases, $z_0$ also increases.
+
+Now, let us consider a very small subsystem size with $\bar{z} \ll \td{\r}^{-1/3}$ and $\bar{z} \ll  \td{m}^{-1/4}$. In this parameter region, the minimal surface extends only near the brane and the general string cloud geometry is slightly deviated from an AdS space. Therefore, it is possible to investigate time evolution of the entanglement entropy perturbatively. If we focus on the leading behavior of the entanglement entropy, the entanglement entropy in the generalized string cloud geometry reduces to \eq{action:EntanglementE} defined in the pure AdS space. This is because the blackening factor in the parameter region we considered reduces to $1$ at leading order. Then, the leading order of the resulting entanglement entropy is again given by \eq{result:TimeDHEE}. Although the resulting form of the entanglement entropy is the same as the one obtained in the inflationary era, its interpretation in the radiation- and matter-dominated eras is usually different from that in the inflationary era. This is because the radial velocity in the bulk geometry, which is proportional to he scale factor on the brane, can show different time-dependence relying on the matter on the brane. In the radiation-dominated era ($\s=\s_c$ and $\td{\r}=0$), since the scale factor behaves like $\bar{r} \sim  \ta^{1/2}$, the entanglement entropy increases with time by
+\be
+S_E^{(rad)}  \sim \ta .
+\ee
+In the matter-dominated era ($\s=\s_c$ and $\td{m}=0$), on the other hand, the scale factor is proportional to $\bar{r} \sim \ta^{2/3}$ and the entanglement entropy increases by
+\be
+S_E^{(mat)}  \sim \ta^{4/3} . 
+\ee
+These examples shows that the entanglement entropy increases in the expanding universe but the increasing rate depends on the matter contents on the brane.  
+
+There exists another interesting parameter region in which we may expect a different time evolution of the entanglement entropy. We assume that the brane lies near the horizon ($\bar{z} \approx z_h$), where $z_h$ denotes the horizon, and that the subsystem size is very large. Then, since the minimal surface cannot touch the black hole horizon, it is only extended in the range of $\bar{z} \le z <  z_h$. Furthermore, the minimal surface except the parts of two ends is almost parallel to the black hole horizon and becomes $\r$-independent, which means $z' \approx 0$. Due to these reasons, the entanglement entropy near the horizon is well approximated by
+\be			\la{result:HEEBH}
+S_E \approx \fr{R^{3}  \O_{2}}{4 G}   \  \int_0^l d \r \ \fr{ \r^{2}}{ \bar{z}^{3}}   =  \fr{R^3}{4 G}  \fr{\O_2 l^3}{\bar{z}^3}  .
+\ee
+On the dual field theory side, $\O_2 l^3$ corresponds to the volume of the subsystem enclosed by the entangling surface. In the later parameter region defined near the black hole horizon, the entanglement entropy follows the volume law like the thermal entropy instead of the area law appearing in the former parameter region. Noting that $\bar{z} \approx z_h$, the leading part of the entanglement entropy \eq{result:HEEBH} is the the same as the Bekenstein-Hawking entropy. This feature has been well studied in Ref. \cite[my]. In this case, the time evolution of the entanglement entropy at leading order becomes
+\be
+S_E^{(rad)}  \sim \ta^{3/2} ,
+\ee
+in the radiation-dominated era and 
+\be
+S_E^{(mat)}  \sim \ta^2 , 
+\ee
+in the matter-dominated era.
+
+
+
+\section{Discussion}
+
+
+
+\tcb{1. In 3-dimensional AdS space, does the fundamental matter corresponding to open strings lead to the change of the central charge.?} \tcr{(No)} \\
+\tcb{2. In this case, how does the entanglement entropy evolve? \\
+3. For a spherical boundary (global patch), is the string cloud geometry still valid with a small modification related to the spatial curvature $k$? \\
+4. How about the brane world model in the hyperscaling violation geometry?}
+
+
+
+
+\vspace{1cm}
+
+
+
+{\bf \large Acknowledgement} \\
+C. Park was supported by Basic Science Research Program through NRF grant No. NRF-2016R1D1A1B03932371 and by Mid-career Researcher Program through the National Research Foundation of Korea grant No. NRF-2019R1A2C1006639.
+
+
+\vspace{1cm}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%T
+%                     %
+%  The Bibliography   %
+%                     %
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{thebibliography}{99}
+
+%\cite{Randall:1999ee}
+\bibitem{Randall:1999ee} 
+  L.~Randall and R.~Sundrum,
+  %``A Large mass hierarchy from a small extra dimension,''
+  Phys.\ Rev.\ Lett.\  {\bf 83}, 3370 (1999)
+  doi:10.1103/PhysRevLett.83.3370
+  [hep-ph/9905221].
+  %%CITATION = doi:10.1103/PhysRevLett.83.3370;%%
+  %8379 citations counted in INSPIRE as of 04 Sep 2019
+  
+  %\cite{Randall:1999vf}
+\bibitem{Randall:1999vf} 
+  L.~Randall and R.~Sundrum,
+  %``An Alternative to compactification,''
+  Phys.\ Rev.\ Lett.\  {\bf 83}, 4690 (1999)
+  doi:10.1103/PhysRevLett.83.4690
+  [hep-th/9906064].
+  %%CITATION = doi:10.1103/PhysRevLett.83.4690;%%
+  %6465 citations counted in INSPIRE as of 04 Sep 2019
+  
+%\cite{Chamblin:1999ya}
+\bibitem{Chamblin:1999ya} 
+  H.~A.~Chamblin and H.~S.~Reall,
+  %``Dynamic dilatonic domain walls,''
+  Nucl.\ Phys.\ B {\bf 562}, 133 (1999)
+  doi:10.1016/S0550-3213(99)00520-9
+  [hep-th/9903225].
+  %%CITATION = doi:10.1016/S0550-3213(99)00520-9;%%
+  %354 citations counted in INSPIRE as of 04 Sep 2019
+  
+  %\cite{Kinney:2009vz}
+\bibitem{Kinney:2009vz} 
+  W.~H.~Kinney,
+  %``TASI Lectures on Inflation,''
+  arXiv:0902.1529 [astro-ph.CO].
+  %%CITATION = ARXIV:0902.1529;%%
+  %80 citations counted in INSPIRE as of 11 Sep 2019
+  
+%\cite{Israel:1966rt}
+\bibitem{Israel:1966rt} 
+  W.~Israel,
+  %``Singular hypersurfaces and thin shells in general relativity,''
+  Nuovo Cim.\ B {\bf 44S10}, 1 (1966)
+  [Nuovo Cim.\ B {\bf 44}, 1 (1966)]
+  Erratum: [Nuovo Cim.\ B {\bf 48}, 463 (1967)].
+  doi:10.1007/BF02710419, 10.1007/BF02712210
+  %%CITATION = doi:10.1007/BF02710419, 10.1007/BF02712210;%%
+  %1706 citations counted in INSPIRE as of 14 Aug 2019
+  
+%\cite{Park:2000ga}
+\bibitem{Park:2000ga} 
+  C.~Park and S.~J.~Sin,
+  %``Moving domain walls in AdS(5) and graceful exit from inflation,''
+  Phys.\ Lett.\ B {\bf 485}, 239 (2000)
+  doi:10.1016/S0370-2693(00)00668-7
+  [hep-th/0005013].
+  %%CITATION = doi:10.1016/S0370-2693(00)00668-7;%%
+  %14 citations counted in INSPIRE as of 14 Aug 2019
+  
+  %\cite{Lee:2007ka}
+\bibitem{Lee:2007ka} 
+  B.~H.~Lee, W.~Lee, S.~Nam and C.~Park,
+  %``Classification of the domain wall cosmology and multiple accelerations,''
+  Phys.\ Rev.\ D {\bf 75}, 103506 (2007)
+  doi:10.1103/PhysRevD.75.103506
+  [hep-th/0701210].
+  %%CITATION = doi:10.1103/PhysRevD.75.103506;%%
+  %10 citations counted in INSPIRE as of 14 Aug 2019
+  
+%\cite{Oh:2009cz}
+\bibitem{Oh:2009cz} 
+  J.~J.~Oh and C.~Park,
+  %``Gravitational Collapse of the Shells with the Smeared Gravitational Source in Noncommutative Geometry,''
+  JHEP {\bf 1003}, 086 (2010)
+  doi:10.1007/JHEP03(2010)086
+  [arXiv:0906.4428 [gr-qc]].
+  %%CITATION = doi:10.1007/JHEP03(2010)086;%%
+  %13 citations counted in INSPIRE as of 14 Aug 2019
+  
+%\cite{Kraus:2018xrn}
+\bibitem{Kraus:2018xrn} 
+  P.~Kraus, J.~Liu and D.~Marolf,
+  %``Cutoff AdS$_{3}$ versus the $ T\overline{T} $ deformation,''
+  JHEP {\bf 1807}, 027 (2018)
+  doi:10.1007/JHEP07(2018)027
+  [arXiv:1801.02714 [hep-th]].
+  %%CITATION = doi:10.1007/JHEP07(2018)027;%%
+  %26 citations counted in INSPIRE as of 18 Nov 2018
+  
+%\cite{Taylor:2018xcy}
+\bibitem{Taylor:2018xcy} 
+  M.~Taylor,
+  %``TT deformations in general dimensions,''
+  arXiv:1805.10287 [hep-th].
+  %%CITATION = ARXIV:1805.10287;%%
+  %16 citations counted in INSPIRE as of 18 Nov 2018
+  
+  
+%\cite{Emparan:1999pm}
+\bibitem{Emparan:1999pm} 
+  R.~Emparan, C.~V.~Johnson and R.~C.~Myers,
+  %``Surface terms as counterterms in the AdS / CFT correspondence,''
+  Phys.\ Rev.\ D {\bf 60}, 104001 (1999)
+  doi:10.1103/PhysRevD.60.104001
+  [hep-th/9903238].
+  %%CITATION = doi:10.1103/PhysRevD.60.104001;%%
+  %466 citations counted in INSPIRE as of 18 Nov 2018
+  
+  %\cite{Park:2013ana}
+\bibitem{Park:2013ana} 
+  C.~Park,
+  %``Holographic Aspects of a Relativistic Nonconformal Theory,''
+  Adv.\ High Energy Phys.\  {\bf 2013}, 389541 (2013)
+  doi:10.1155/2013/389541
+  [arXiv:1209.0842 [hep-th]].
+  %%CITATION = doi:10.1155/2013/389541;%%
+  %18 citations counted in INSPIRE as of 10 Dec 2018
+  
+  %\cite{Park:2013dqa}
+\bibitem{Park:2013dqa} 
+  C.~Park,
+  %``Massive quasinormal mode in the holographic Lifshitz Theory,''
+  Phys.\ Rev.\ D {\bf 89}, no. 6, 066003 (2014)
+  doi:10.1103/PhysRevD.89.066003
+  [arXiv:1312.0826 [hep-th]].
+  %%CITATION = doi:10.1103/PhysRevD.89.066003;%%
+  %10 citations counted in INSPIRE as of 10 Dec 2018
+  
+  %\cite{Koh:2018rsw}
+\bibitem{Koh:2018rsw} 
+  S.~Koh, J.~Hun Lee, C.~Park and D.~Ro,
+  %``Quantum entanglement in inflationary cosmology,''
+  arXiv:1806.01092 [hep-th].
+  %%CITATION = ARXIV:1806.01092;%%
+  %1 citations counted in INSPIRE as of 18 Sep 2019
+  
+\end{thebibliography}
+
+\end{document}
